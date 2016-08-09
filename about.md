@@ -1,11 +1,23 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Sobre el autor
+permalink: /sobreElAutor/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+**Hola y bienvenido !!!**
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+Desarrollador Web FullStack.
+
+**Quien soy ?**
+
+Me llamo Elmer, estudie Informatica Industrial y actualmente dedico mi tiempo al desarrollo web/movil, viajar y conocer mas gente apacionada con el mundo de la tecnologia.
+
+**Que hago ?**
+
+Soy un apasionado por el desarrollo web. aplicados tanto en sistemas web y aplicaciones moviles. Y pues me siento bastante contento de poder hacer algo que me gusta.
+
+
+Hey !!! si te gusta mi blog sigueme en twitter:
+<a href="https://twitter.com/Devmerz" target="_blank">@devmerz</a>
+
