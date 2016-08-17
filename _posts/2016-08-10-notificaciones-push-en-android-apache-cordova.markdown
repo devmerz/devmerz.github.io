@@ -2,6 +2,7 @@
 layout: post
 title: Notificaciones push en android con Apache Cordova
 categories: android apache cordova notificaciones push
+permalink: :title
 ---
 
 
@@ -62,9 +63,7 @@ cordova platform add android
 {% highlight ruby %}
 cordova plugin add phonegap-plugin-push --variable SENDER_ID="TU_NUMERO_DE_PROYECTO"
 {% endhighlight %}
-
-Perfecto !!!
-Todo el proceso de mas arriba nos dejo una estructura similar a esta:
+Para mas informacion sobre este plugin, puedes revisar su [repositorio de Github](https://github.com/phonegap/phonegap-plugin-push)
 
 **Registrar nuestro dispositivo en GCM**
 {% highlight ruby %}
@@ -91,8 +90,33 @@ push.on('error', function(e) {
     // e.message
 });
 {% endhighlight %}
-****
 
+**Compilando app en Dispositivo android para primera prueba**
+{% highlight ruby %}
+cordova run android
+{% endhighlight %}
 
+**Probando con Curl**
 
-in progress ...
+En una aplicacion real generalmente sera un codigo backend que sera el trigger para que GCM envie las notificaciones a los dispotivos registrados.
+
+Como este es un ejemplo simple, yo lo simulare desde la consola usando CURL.
+{% highlight ruby %}
+in progress
+{% endhighlight %}
+**Probando desde Postman**
+
+Si prefieres un entorno grafico, Postman es un plugin que te puede ayudar.
+{% highlight ruby %}
+in progress
+{% endhighlight %}
+**Requerimientos para que funcione en Android**
+
+Antes de compilar tu aplicacion, asegurate de que tienes instalados los siguiente elementos, en el SDK de android.
+
+* Android Support Library version 23 or greater
+* Local Maven repository for Support Libraries (formerly Android Support Repository) version 20 or greater
+* Google Play Services version 27 or greater
+* Google Repository version 22 or greater
+
+Para detalles en su [repositorio de Github](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)

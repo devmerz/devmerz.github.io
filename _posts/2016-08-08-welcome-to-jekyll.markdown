@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Bienvenido !!!"
-date:   2016-08-08 21:38:16
 categories: jekyll update
+permalink: :title
 ---
 
 Hola y bienvenido al blog.

@@ -2,6 +2,7 @@
 layout: post
 title: "Comandos utiles : Apache Cordova"
 categories: comandos apache cordova
+permalink: :title
 ---
 
 **Iniciar un proyecto**
