@@ -65,13 +65,50 @@ cordova plugin add phonegap-plugin-push --variable SENDER_ID="TU_NUMERO_DE_PROYE
 {% endhighlight %}
 Para mas informacion sobre este plugin, puedes revisar su [repositorio de Github](https://github.com/phonegap/phonegap-plugin-push)
 
-**Registrar nuestro dispositivo en GCM**
+**Codigo**
+
+Crearemos un archivo index.js dentro de la carpeta js y adicionamos la referencia a este archivo dentro de index.html
+
 {% highlight ruby %}
+<script type="text/javascript" src="js/index.js"></script>
+{% endhighlight %}
+
+Mi index.html se ve asi:
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Notificaciones Push</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
+
+{% endhighlight %}
+
+Y dentro index.js adicionamos el codigo referente a las notificaciones push:
+
+{% highlight js %}
 var id_gcm = -1;
 
 var push = PushNotification.init({
     android: {
-        senderID: "ID_PROYECTO"
+        senderID: "TU_NUMERO_DE_PROYECTO"
     }
 });
 
@@ -96,14 +133,39 @@ push.on('error', function(e) {
 cordova run android
 {% endhighlight %}
 
+cuando la aplicacion inicie veras que en el campo textarea aparecera un ID. Este es el ID asigando a tu dispositivo por GCM. Deberias verse similar a este:
+{% highlight ruby %}
+APA91bHMaA-R0eZrPisZCGfwwd7z1EzL7P7Q7cyocVkxBU3nXWed1cQYCYvF glMHIJ40knjZENQ62UFgg5QnEcqwB5dFZ-AmNZjATO8QObGp0p1S6Rq2tcCu UibjnyaS0UF1gIM1mPeM25MdZdNVLG3dM6ZSfxV8itpihroEN5ANj9A26RU2Uw
+{% endhighlight %}
+Y gracias a este ID, GCM sabra a que dispotivos enviar las notificaciones.
+
+Ahora es el momento de enviar las notificaciones. COPIA EL ID DE TU DISPOSITIVO.
+
 **Probando con Curl**
 
-En una aplicacion real generalmente sera un codigo backend que sera el trigger para que GCM envie las notificaciones a los dispotivos registrados.
+En una aplicacion real, existira un backend que se comunicara con GCM para que este ultimo envie las notificaciones a los dispotivos moviles.
 
-Como este es un ejemplo simple, yo lo simulare desde la consola usando CURL.
+Como este es un ejemplo simple, simulare el envio que deberia realizar un Backend usando CURL.
+
 {% highlight ruby %}
-in progress
+curl --header "Authorization: key=AIzaSyD5lRMJ0asKRmkIpkZAcTJilWNFIdk8xOY" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"fs...Tw:APA...SzXha\"]}"
 {% endhighlight %}
+
+
+* Authorization : Es el Api Key (Clave de API) que recuperamos en la configuracion de proyecto.
+
+El json que debemos enviarle a GCM debe tener la siguiente estructura:
+
+{% highlight ruby %}
+{
+    "registration_ids":["ID_DE_DISPOSITIVO_1","ID_DE_DISPOSITIVO_2"],
+    "data":{
+        "title":"Mi Notificacion Push !!!",
+        "message":"Nueva notificacion registrada"
+    }
+}
+{% endhighlight %}
+
 **Probando desde Postman**
 
 Si prefieres un entorno grafico, Postman es un plugin que te puede ayudar.
@@ -120,3 +182,7 @@ Antes de compilar tu aplicacion, asegurate de que tienes instalados los siguient
 * Google Repository version 22 or greater
 
 Para detalles en su [repositorio de Github](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
+
+
+Y bueno esto es todo !!! 
+Saludos !!! 
