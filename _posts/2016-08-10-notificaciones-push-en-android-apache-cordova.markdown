@@ -148,7 +148,7 @@ En una aplicacion real, existira un backend que se comunicara con GCM para que e
 Como este es un ejemplo simple, simulare el envio que deberia realizar un Backend usando CURL.
 
 {% highlight ruby %}
-curl --header "Authorization: key=AIzaSyD5lRMJ0asKRmkIpkZAcTJilWNFIdk8xOY" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"fs...Tw:APA...SzXha\"]}"
+curl --header "Authorization: key=AIzaSyD5lRMJ0asKRmkIpkZAcTJilWNFIdk8xOY" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"ID_DE_DISPOSITIVOS\"],\"data\":{\"title\":\"Mi primera notificacion Push\",\"message\":\"Nueva notificacion !!!\"}}"
 {% endhighlight %}
 
 
