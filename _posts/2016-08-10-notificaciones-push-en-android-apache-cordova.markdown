@@ -6,6 +6,8 @@ permalink: :title
 ---
 
 
+NOTA: A partir de Junio del 2016 aproximadamente. Google cambio el metodo de envio de notificaciones push de GCM a FCM. Por lo tanto este tutorial solo es funcional para API KEYs generados antes de Junio del 2016.
+
 **Crear proyecto**
 
 Debemos dirigirnos a la pagina [Console Developers Google](https://console.developers.google.com), Una vez dentro:
