@@ -1,14 +1,13 @@
 ---
 layout: post
-title: Notificaciones Push en Android con Apache Cordova y FCM
-categories: apache cordova android notificaciones push fcm gcm
+title: Notificaciones Push en Android con Apache Cordova y FCM (Firebase Cloud Messaging)
+categories: apache cordova android notificaciones push fcm gcm Firebase Cloud Messaging
 permalink: :title
 ---
 
 
-Aproximadamente en Junio del 2016, Google dejo obsoleto en envio de notificaciones push a dispositivos android via GCM. Y puso en vigencia el servicio FCM (Firebase Cloud Messaging), que realiza la misma labor (y puede hacer muchas cosas mas).
-
-Lo primero que debemos hacer es conseguir el API KEY para poder hacer que las notificaciones funcionen en Android.
+Debido a que Google cambio el metodo de envio de notificaciones push de **GCM** a **FCM** escribimos el siguiente articulo.
+Esperamos que te sea de ayuda.
 
 **Crear un proyecto**
 
@@ -61,3 +60,6 @@ PONER IMAGEN 5 AQUI
 **Pero Antes !!!**
 
 Antes de continuar debemos generar la aplicacion con Apache Cordova, debido que necesitaremos el nombre del paquete de la aplicacion. Entonces procedemos a crearla.
+
+
+TUTORIAL IN PROGRESS ...

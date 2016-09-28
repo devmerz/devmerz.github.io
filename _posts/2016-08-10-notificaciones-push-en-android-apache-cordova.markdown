@@ -6,7 +6,18 @@ permalink: :title
 ---
 
 
-NOTA: A partir de Junio del 2016 aproximadamente. Google cambio el metodo de envio de notificaciones push de GCM a FCM. Por lo tanto este tutorial solo es funcional para API KEYs generados antes de Junio del 2016.
+**ADVERTENCIA !!!**
+
+A partir de Junio del 2016 aprox. Google cambio el metodo de envio 
+de notificaciones push de **GCM** a **FCM**. Por lo tanto este tutorial solo es 
+funcional para **API KEYs** generados antes de Junio del 2016.
+
+Te recomendamos utilizar **FCM (Firebase Cloud Messaging)** que funciona genial para enviar notificaciones push en android con Apache cordova -> [Apache cordova con Android y FCM](https://devmerz.github.io/notificaciones-push-android-apache-cordova-fcm)
+
+
+{% highlight ruby %}
+...
+{% endhighlight %}
 
 **Crear proyecto**
 
