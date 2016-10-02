@@ -5,9 +5,17 @@ categories: comandos apache cordova
 permalink: :title
 ---
 
-**Iniciar un proyecto**
+<img src="/assets/comandos-utiles-apache-cordova/cordova-logo.png" />
 
-El siguiente comando iniciara un proyecto llamado `MiApp` dentro de una carpeta con el mismo nombre.
+<a href="https://cordova.apache.org/" target="_blank">Apache cordova</a> es una tecnologia que te permite crear aplicaciones moviles para multiples plataformas utilizando tecnologias estandar como HTML5, CSS3 y JAVASCRIPT.
+
+A continuación veras los comandos que más utilizo a la hora de crear aplicaciones.
+
+<br/>
+
+## Iniciar un proyecto
+
+Este comando iniciara un proyecto llamado `MiApp` dentro de una carpeta con el mismo nombre.
 
 {% highlight ruby %}
 cordova create MiApp
@@ -17,6 +25,10 @@ Si es que desea darle un identificador a su proyecto, el comando es el siguiente
 {% highlight ruby %}
 cordova create CarpetaMiAplicacion com.miempresa.miapp MiApp
 {% endhighlight %}
+
+<br/>
+
+## Plataformas
 
 **Añadir plataformas**
 {% highlight ruby %}
@@ -39,6 +51,9 @@ cordova platforms ls
 cordova platform remove android
 {% endhighlight %}
 
+<br/>
+
+## Plugins
 
 **Añadir plugins**
 {% highlight ruby %}
@@ -56,13 +71,17 @@ cordova plugin list
 cordova plugin remove cordova-plugin-network-information
 {% endhighlight %}
 
+<br/>
+
+## Construir y compilar una aplicación
+ 
 **Construir la aplicacion**
 {% highlight ruby %}
 cordova build
 {% endhighlight %}
 
 
-**Probar la aplicacion en un simulador**
+**Probar la aplicacion en un simulador (Android)**
 
 {% highlight ruby %}
 cordova emulate android
@@ -73,8 +92,5 @@ cordova emulate android
 {% highlight ruby %}
 cordova run android
 {% endhighlight %}
-No olvides activar la `depuración USB` en el dispositivo.
+No olvides activar la `depuración USB` en el dispositivo, antes de probar en un dispositivo Android.
 
-Y bueno eso son los comandos que mas utilizo a la hora de crear aplicaciones con Apache Cordova, Espero haya sido de ayuda.
-
-Saludos !!!

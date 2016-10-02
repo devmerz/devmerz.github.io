@@ -5,19 +5,18 @@ categories: android apache cordova notificaciones push
 permalink: :title
 ---
 
+<div style="border:1px solid red; background: #F2DEDE; padding:15px;">
+<strong>ADVERTENCIA !!!</strong>
+<p>
+Aproximadamente en Junio del 2016 Google cambio el metodo de envio 
+de notificaciones push de <strong>GCM</strong> a <strong>FCM</strong>. Por lo tanto este tutorial solo es 
+funcional para <strong>API KEYs</strong> generados antes de Junio del 2016.
+<br/>
+Te recomendamos utilizar <strong>FCM (Firebase Cloud Messaging)</strong> que funciona de maravilla para enviar Notificaciones Push a aplicaciones hechas con Apache Cordova para Android -> <a href="https://devmerz.github.io/notificaciones-push-android-apache-cordova-fcm" target="_blank">Apache cordova con Android y FCM</a>
+</p>
+</div>
 
-**ADVERTENCIA !!!**
-
-A partir de Junio del 2016 aprox. Google cambio el metodo de envio 
-de notificaciones push de **GCM** a **FCM**. Por lo tanto este tutorial solo es 
-funcional para **API KEYs** generados antes de Junio del 2016.
-
-Te recomendamos utilizar **FCM (Firebase Cloud Messaging)** que funciona genial para enviar notificaciones push en android con Apache cordova -> [Apache cordova con Android y FCM](https://devmerz.github.io/notificaciones-push-android-apache-cordova-fcm)
-
-
-{% highlight ruby %}
-...
-{% endhighlight %}
+<br/>
 
 **Crear proyecto**
 
@@ -179,12 +178,7 @@ El json que debemos enviarle a GCM debe tener la siguiente estructura:
 }
 {% endhighlight %}
 
-**Probando desde Postman**
 
-Si prefieres un entorno grafico, Postman es un plugin que te puede ayudar.
-{% highlight ruby %}
-in progress
-{% endhighlight %}
 **Requerimientos para que funcione en Android**
 
 Antes de compilar tu aplicacion, asegurate de que tienes instalados los siguiente elementos, en el SDK de android.

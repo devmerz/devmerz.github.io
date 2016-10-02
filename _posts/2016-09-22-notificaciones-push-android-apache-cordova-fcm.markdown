@@ -5,7 +5,11 @@ categories: apache cordova android notificaciones push fcm gcm Firebase Cloud Me
 permalink: :title
 ---
 
-En el siguiente articulo usted aprendera como Configurar un Proyecto en Console Developers Google y Firebase Google Cloud Messaging para enviar notificaciones PUSH a dispositivos Android, a traves de FCM.
+
+<img src="/assets/apache-cordova-push-android-fcm/imagen-principal.png" />
+
+
+En el siguiente articulo usted aprendera como Configurar un Proyecto en Console Developers Google y  <a href="https://firebase.google.com/docs/cloud-messaging/" target="_blank">Firebase Google Cloud Messaging</a> para enviar notificaciones PUSH a dispositivos Android, a traves de FCM.
 
 
 **Crear un nuevo proyecto**
@@ -80,4 +84,4 @@ El repositorio del plugin que utilizaremos es [Cordova plugin FCM](https://githu
 Para la prueba simplemente utilizaremos POSTMAN.
 
 Completando tutorial ... 
-Si necesitas ayuda urgente, comenta, contactame.
+
