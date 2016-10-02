@@ -91,15 +91,6 @@ En los siguientes ejemplos hago uso de las librerias requeridas a travez de CDN,
 {% endhighlight %}
 El anterior ejemplo generara un formulario con 2 campos, un input y un textarea, el primero es requerido. Pruebalo !!!.
 
-**Ejemplo 2**
-{% highlight html %}
- in progress...
-{% endhighlight %}
-**Ejemplo 3**
-{% highlight html %}
- in progress...
-{% endhighlight %}
-
 
 Personalmente la libreria me dejo un buen sabor de boca, es muy facil de implementar y da resultados bastante buenos. Aunque encontre pequenos bugs en los campos mas complejos que todavia se encuentran solucionando los desarrolladores, pero tranquilos no es nada para alarmarse.
 
