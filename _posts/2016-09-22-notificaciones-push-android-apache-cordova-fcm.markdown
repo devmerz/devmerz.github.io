@@ -5,11 +5,10 @@ categories: apache cordova android notificaciones push fcm gcm Firebase Cloud Me
 permalink: :title
 ---
 
+En el siguiente articulo usted aprendera como Configurar un Proyecto en Console Developers Google y Firebase Google Cloud Messaging para enviar notificaciones PUSH a dispositivos Android, a traves de FCM.
 
-Debido a que Google cambio el metodo de envio de notificaciones push de **GCM** a **FCM** escribimos el siguiente articulo.
-Esperamos que te sea de ayuda.
 
-**Crear un proyecto**
+**Crear un nuevo proyecto**
 
 - Nos dirigimos a [Console Developers Google](https://console.developers.google.com/)
 
@@ -43,23 +42,42 @@ Entonces el proyecto fue creado. y seremos redigidos a la siguiente pantalla:
 
 <img src="/assets/apache-cordova-push-android-fcm/anade-firebase-a-tu-proyecto.png" />
 
+- Click en: Añade Firebase a tu aplicacion de Android.
+- En la pantalla que aparecera introducimos el Nombre del paquete (Package Name) de la aplicacion, en mi caso creare el APP con el package name igual a com.miappfcm.app.
+- Click en Añadir Aplicacion.
 
-**Añade firebase a tu aplicacion android**
+<img src="/assets/apache-cordova-push-android-fcm/generando-el-json.png" />
 
-OK !!!, Antes de continuar debemos crear la aplicacion android porque necesitaremos el 
-**Package Name**. 
+**Descarga del archivo google-services.json**
 
+Dando click en Añadir Aplicacion, se descargara un archivo llamado google-services.json. Este archivo contiene toda la informacion de nuestro proyecto(Google Firebase) y tambien nos ayudara a que el dispositivo pueda recibir las notificaciones.
 
-
- Ahora le damos click a la opcion Anade firebase a tu aplicacion android
-
-PONER IMAGEN 5 AQUI
-
-
-
-**Pero Antes !!!**
-
-Antes de continuar debemos generar la aplicacion con Apache Cordova, debido que necesitaremos el nombre del paquete de la aplicacion. Entonces procedemos a crearla.
+Este archivo debemos ponerlo en la siguiente direccion del proyecto.
 
 
-TUTORIAL IN PROGRESS ...
+{% highlight ruby %}
+MiApp/platforms/android/google-services.json
+{% endhighlight %}
+
+
+**Creando el Proyecto, Adicionando plataforma Android, Instalando plugin FCM**
+
+{% highlight ruby %}
+cordova create MiApp com.miappfcm.app MiAppPushFCM
+cd MiAppPushFCM
+cordova platform add android
+cordova plugin add cordova-plugin-fcm
+{% endhighlight %}
+
+NO LO OLVIDES !!! El Package Name es : com.miappfcm.app y debes mover el archivo google-services.json a la direccion indicada mas arriba.
+
+El repositorio del plugin que utilizaremos es [Cordova plugin FCM](https://github.com/fechanique/cordova-plugin-fcm)
+
+
+
+**Probando la aplicacion**
+
+Para la prueba simplemente utilizaremos POSTMAN.
+
+Completando tutorial ... 
+Si necesitas ayuda urgente, comenta, contactame.
