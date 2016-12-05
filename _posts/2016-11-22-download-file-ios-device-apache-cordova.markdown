@@ -35,11 +35,12 @@ var filename = "Octocat.png";
 
 var fileTransfer = new FileTransfer();
 var uri = encodeURI(url + filename);
-var fileURL = "///storage/emulated/0/DCIM/SYNC/AFP/" + filename;
+var fileURL = "cdvfile://localhost/persistent/" + filename;
 
 fileTransfer.download(
         uri, fileURL, function(entry) {
             console.info("Download complete: " + entry.toURL());
+            document.getElementById("imageDownloaded").src= cordova.file.applicationStorageDirectory + "Documents/"+ filename;
         },
         function(error) {
             console.warn("Download error source " + error.source);
@@ -56,7 +57,7 @@ fileTransfer.download(
 In the index.html file you need add a tag **img**, Here the downloaded image will be displayed
 
 {% highlight html %}
-<img id="" src=""/>
+<img id="imageDownloaded" src=""/>
 {% endhighlight %}
 
 Ok, this simple code downloads an image and shows it in an img tag on the index.html page.
