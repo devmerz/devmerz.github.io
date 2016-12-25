@@ -4,6 +4,8 @@ title: Sobre el autor
 permalink: /sobreElAutor/
 ---
 
+<link rel="stylesheet" type="text/css" href="/css/materialize.min.css">
+
 **Hola y bienvenido !!!**
 
 
@@ -16,7 +18,6 @@ Me llamo Elmer, estudie Informatica Industrial y actualmente dedico mi tiempo al
 **Que hago ?**
 
 Soy un apasionado por el desarrollo web. aplicados tanto en sistemas web y aplicaciones moviles. Y pues me siento bastante contento de poder hacer algo que me gusta.
-
 
 Hey !!! si te gusta mi blog sigueme en twitter:
 <a href="https://twitter.com/Devmerz" target="_blank">@devmerz</a>

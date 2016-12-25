@@ -59,17 +59,6 @@ In the index.html file you need add a tag **img**, Here the downloaded image wil
 <img id="" src=""/>
 {% endhighlight %}
 
-Ok, this simple code downloads an image and shows it in an img tag on the index.html page.
+Ok, this simple code downloads an image and shows it in an *img* tag on the index.html page.
 
-## Result
-
-Put here the screenshots...
-
-
-# Repository on Github
-
-<a href="https://github.com/apache/cordova-plugin-file-transfer" target="_blank"> GET CODE HERE</a>
-
-
-TUTORIAL IN PROGRESS ....
 
