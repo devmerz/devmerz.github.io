@@ -80,10 +80,10 @@ Dentro de la consola de Firebase, Debemos ir al area de configuracion del proyec
 3. Para facilitar las cosas adicionamos Jquery al proyecto cordova.
 
 
-Ahora creamos un archivo **funciones.js** donde estarán nuestran funciones, la primera funcion que crearemos sera **verificar()** , esta funcion simplemente verificará que un usuario es valido en Firebase.
+Ahora creamos un archivo **funciones.js** donde estarán nuestran funciones, la primera funcion que crearemos sera **login()** , esta funcion simplemente verificará que un usuario es valido en Firebase.
 
 {% highlight ruby %}
-function verificar(){
+function login(){
     firebase.auth().signInWithEmailAndPassword($("#email").val(), $("#password").val()).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -92,15 +92,8 @@ function verificar(){
 };
 {% endhighlight %}
 
-Dentro de **index.html** crearemos un formulario simple (email, contraseña). y al boton "VERIFICAR USUARIO" de la aplicacion le adicionamos la siguiente funcion **onclick="verificar()"**
+Dentro de **index.html** crearemos un formulario simple (email, contraseña). y al boton "VERIFICAR USUARIO" de la aplicacion le adicionamos la siguiente funcion **onclick="login()"**
 
 <img src="/assets/login-firebase/LoginAndroid.png" style="width:250px;"/>
 
 
-## Repositorio github.
-
-
-La autenticacion de Firebase me parece una alternativa bastante funcional, yo lo recomiendo para aplicaciones pequeñas y tal vez medianas.
-
-
-tutorial in progress...
