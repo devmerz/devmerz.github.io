@@ -1,24 +1,25 @@
 ---
 layout: page
-title: Sobre el autor
-permalink: /sobreElAutor/
+title: Sobre mí
+permalink: /sobre-mi/
 ---
 
-<link rel="stylesheet" type="text/css" href="/css/materialize.min.css">
-
-**Hola y bienvenido !!!**
+<!--<link rel="stylesheet" type="text/css" href="/css/materialize.min.css">-->
 
 
-Desarrollador Web FullStack.
+Hola :)
 
-**Quien soy ?**
+Mi nombre es Elmer y actualmente dedico mi tiempo al desarrollo Web y Móvil.
 
-Me llamo Elmer, estudie Informatica Industrial y actualmente dedico mi tiempo al desarrollo web/movil, viajar y conocer mas gente apacionada con el mundo de la tecnologia.
+Viajar y conocer gente apacionada por crear cosas que ayuden a las demas personas es una de mis motivaciones mas grandes.
 
-**Que hago ?**
+De ahi nace este blog. Pues este blog es mi intento de compartir articulos sobre temas interesantes del desarrollo Web y Móvil en **Español**, Ya que contenido en Ingles hay bastante.
 
-Soy un apasionado por el desarrollo web. aplicados tanto en sistemas web y aplicaciones moviles. Y pues me siento bastante contento de poder hacer algo que me gusta.
 
-Hey !!! si te gusta mi blog sigueme en twitter:
+
+
+Hey !!! 
+
+Si te gusta mi blog sigueme en twitter:
 <a href="https://twitter.com/Devmerz" target="_blank">@devmerz</a>
 
