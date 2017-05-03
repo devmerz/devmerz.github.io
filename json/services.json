@@ -1,25 +1,157 @@
-{
-    "name":"John",
-    "age":30,
- },
- {
-    "name":"John",
-    "age":30,
- },
- {
-    "name":"John",
-    "age":30,
- },
- {
-    "name":"John",
-    "age":30,
- },
- {
-    "name":"John",
-    "age":30,
- },
- {
-    "name":"John",
-    "age":30,
- },
- 
+[
+    {
+        "id":1,
+        "name":"Restaurantes",
+        "list_services" : [
+            {
+                "name_service":"Restaurante 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Restaurante 2",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Restaurante 3",
+                "lat":123,
+                "long":456
+             }
+
+        ]
+    },
+    {
+        "id":2,
+        "name":"Comida Vegetariana",
+        "list_services" : [
+            {
+                "name_service":"Comida Vegetariana 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Comida Vegetariana 2",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Comida Vegetariana 3",
+                "lat":123,
+                "long":456
+             }
+
+        ]
+    },
+    {
+        "id":3,
+        "name":"Hospitales y centros medicos",
+        "list_services" : [
+            {
+                "name_service":"Hospitales 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Hospitales 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Hospitales 1",
+                "lat":123,
+                "long":456
+             }
+
+        ]
+    },
+    {
+        "id":4,
+        "name":"Baños publicos",
+        "list_services" : [
+            {
+                "name_service":"Baños 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Baños 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Baños 1",
+                "lat":123,
+                "long":456
+             }
+
+        ]
+    },
+    {
+        "id":5,
+        "name":"Farmacias",
+        "list_services" : [
+            {
+                "name_service":"Farmacias 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Farmacias 2",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Farmacias 3",
+                "lat":123,
+                "long":456
+             }
+
+        ]
+    },
+    {
+        "id":6,
+        "name":"Hoteles",
+        "list_services" : [
+            {
+                "name_service":"Hoteles 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Hoteles 2",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Hoteles 3",
+                "lat":123,
+                "long":456
+             }
+
+        ]
+    },
+    {
+        "id":7,
+        "name":"Museos",
+        "list_services" : [
+            {
+                "name_service":"Museos 1",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Museos 2",
+                "lat":123,
+                "long":456
+             },
+             {
+                "name_service":"Museos 3",
+                "lat":123,
+                "long":456
+             }
+
+        ]
+    }
+]
+
