@@ -4,19 +4,19 @@
         "name":"Restaurantes",
         "list_services" : [
             {
-                "name_service":"Restaurante 1",
-                "lat":123,
-                "long":456
+                "name_service":"Restaurante 1 Cerca plaza España",
+                "lat":-16.514092,
+                "long":-68.128897
              },
              {
-                "name_service":"Restaurante 2",
-                "lat":123,
-                "long":456
+                "name_service":"Restaurante 2 Cerca Plaza Avaroa",
+                "lat":-16.510365,
+                "long":-68.127623
              },
              {
-                "name_service":"Restaurante 3",
-                "lat":123,
-                "long":456
+                "name_service":"Restaurante 3 Cerca del stadium",
+                "lat":-16.499289,
+                "long":-68.121827
              }
 
         ]
@@ -26,129 +26,14 @@
         "name":"Comida Vegetariana",
         "list_services" : [
             {
-                "name_service":"Comida Vegetariana 1",
-                "lat":123,
-                "long":456
+                "name_service":"Comida Vegetariana 1, cerca plaza murillo",
+                "lat":-16.495755,
+                "long":-68.134142
              },
              {
-                "name_service":"Comida Vegetariana 2",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Comida Vegetariana 3",
-                "lat":123,
-                "long":456
-             }
-
-        ]
-    },
-    {
-        "id":3,
-        "name":"Hospitales y centros medicos",
-        "list_services" : [
-            {
-                "name_service":"Hospitales 1",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Hospitales 1",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Hospitales 1",
-                "lat":123,
-                "long":456
-             }
-
-        ]
-    },
-    {
-        "id":4,
-        "name":"Baños publicos",
-        "list_services" : [
-            {
-                "name_service":"Baños 1",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Baños 1",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Baños 1",
-                "lat":123,
-                "long":456
-             }
-
-        ]
-    },
-    {
-        "id":5,
-        "name":"Farmacias",
-        "list_services" : [
-            {
-                "name_service":"Farmacias 1",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Farmacias 2",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Farmacias 3",
-                "lat":123,
-                "long":456
-             }
-
-        ]
-    },
-    {
-        "id":6,
-        "name":"Hoteles",
-        "list_services" : [
-            {
-                "name_service":"Hoteles 1",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Hoteles 2",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Hoteles 3",
-                "lat":123,
-                "long":456
-             }
-
-        ]
-    },
-    {
-        "id":7,
-        "name":"Museos",
-        "list_services" : [
-            {
-                "name_service":"Museos 1",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Museos 2",
-                "lat":123,
-                "long":456
-             },
-             {
-                "name_service":"Museos 3",
-                "lat":123,
-                "long":456
+                "name_service":"Comida Vegetariana 2,, kollasuyo",
+                "lat":-16.494745,
+                "long":-68.152742
              }
 
         ]
