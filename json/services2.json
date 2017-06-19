@@ -1,0 +1,13 @@
+[
+  {
+      "id":2,
+      "name":"Comida Vegetariana",
+      "list_services" : [
+          {
+              "name_service":"OBRAJES PAPAAAA",
+              "lat":-16.522554,
+              "long":-68.104032
+           }
+      ]
+  }
+]
