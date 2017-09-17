@@ -7,7 +7,7 @@ header .post-title{
 
 /* Clases para la cabecera */
 .site-header{
-	background: #3C8DBC;
+	background: #23A1DE;
 }
 .site-title{
 	color: white !important;
@@ -20,4 +20,8 @@ header .post-title{
     .site-nav .page-link{
 		color: black !important;
 	}
+}
+
+.footer-col-2 {
+    text-align: center;
 }
