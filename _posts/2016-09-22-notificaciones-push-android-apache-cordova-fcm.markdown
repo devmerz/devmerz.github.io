@@ -5,10 +5,11 @@ categories: apache cordova android notificaciones push fcm gcm Firebase Cloud Me
 permalink: :title
 ---
 
-(Ultima actualización de este post: 22/07/2017) <br/>
-Actualización: Amigos visitantes del blog y especificamente de este articulo. Al parecer hay muchas personas interesadas en este tema y ultimamente me llegan muchos mensajes indicando de que el procedimiento de este articulo no funciona, Deben comprender que este articulo fue escrito hace 2 años. En su tiempo funcionó a la perfección y es normal que ahora no funcione, Las librerias/plugins/frameworks tienden a cambiar el modo de implementarlos con el tiempo. Por ahora les pido que por favor no tomes el contenido de este articulo como algo que deba funcionar, quiza puedas revisarlo para darte una idea de las cosas que hice para implementarlo en mi aplicación.
-<br>
-<strong>Si quieres añadir Notificaciones Push a tu Aplicacion hecha con Cordova lo mejor que te recomiendo es que busques la documentacion directa de los plugins.</strong> <br/>
+(Ultima actualización de este post: 22/07/2017) <br />
+Actualización 2019: Amigos visitantes del blog y especificamente de este articulo. Al parecer hay muchas personas interesadas en este tema y ultimamente me llegan muchos mensajes indicando de que el procedimiento de este articulo no funciona, Deben comprender que este articulo fue escrito hace 2 años. En su tiempo funcionó a la perfección y es normal que ahora no funcione, Las librerias/plugins/frameworks tienden a cambiar el modo de implementarlos con el tiempo. Por ahora les pido que por favor no tomes el contenido de este articulo como algo que deba funcionar, quiza puedas revisarlo para darte una idea de las cosas que hice para implementarlo en mi aplicación.
+<br />
+**Si quieres añadir Notificaciones Push a tu Aplicacion hecha con Cordova lo mejor que te recomiendo es que busques la documentacion directa de los plugins.**
+<br />
 PD: Terminaré algunos trabajos que estoy realizando y escribiré una versión actualizada de este articulo ;)
 
 <hr/>
