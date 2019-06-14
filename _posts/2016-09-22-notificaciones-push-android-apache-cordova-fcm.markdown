@@ -5,7 +5,7 @@ categories: apache cordova android notificaciones push fcm gcm Firebase Cloud Me
 permalink: :title
 ---
 
-(Ultima actualización de este post: 22/07/2017)
+(Ultima actualización de este post: 22/07/2017) ...
 <img src="/assets/apache-cordova-push-android-fcm/imagen-principal.png" />
 
 
