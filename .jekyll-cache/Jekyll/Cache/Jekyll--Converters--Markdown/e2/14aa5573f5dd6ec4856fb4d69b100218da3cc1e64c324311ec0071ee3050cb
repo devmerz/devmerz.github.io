@@ -1,0 +1,46 @@
+I"<p>In this tutorial we are going to download a image of internet to a iOS device (Iphone 5s), then show the image downloaded in a <strong>img</strong> tag of html.</p>
+
+<h2 id="create-the-application">Create the application</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">create</span> <span class="no">MyApp</span>
+<span class="n">cd</span> <span class="no">MyApp</span></code></pre></figure>
+
+<h2 id="install-the-plugin--cordova-plugin-file-transfer">Install the Plugin : Cordova Plugin File Transfer</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">cordova</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">transfer</span></code></pre></figure>
+
+<p>We will use the plugin <strong>Cordova Plugin File Transfer</strong>, you can read more about this plugin in : <a href="https://github.com/apache/cordova-plugin-file-transfer" target="_blank">Cordova Plugin File Transfer</a></p>
+
+<h2 id="add-javascript-code">Add Javascript code</h2>
+
+<p>We are going to download the logo of Github, from <a href="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" target="_blank">Here</a>, On index.js file, we need add the next code:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://assets-cdn.github.com/images/modules/logos_page/</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Octocat.png</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">fileTransfer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileTransfer</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="nx">url</span> <span class="o">+</span> <span class="nx">filename</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fileURL</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">cdvfile://localhost/persistent/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">filename</span><span class="p">;</span>
+
+<span class="nx">fileTransfer</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span>
+        <span class="nx">uri</span><span class="p">,</span> <span class="nx">fileURL</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">entry</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="dl">"</span><span class="s2">Download complete: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">toURL</span><span class="p">());</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">imageDownloaded</span><span class="dl">"</span><span class="p">).</span><span class="nx">src</span><span class="o">=</span> <span class="nx">cordova</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">applicationStorageDirectory</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">Documents/</span><span class="dl">"</span><span class="o">+</span> <span class="nx">filename</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Download error source </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">error</span><span class="p">.</span><span class="nx">source</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="kc">false</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA==</span><span class="dl">"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">);</span></code></pre></figure>
+
+<p>In the index.html file you need add a tag <strong>img</strong>, Here the downloaded image will be displayed</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"imageDownloaded"</span> <span class="na">src=</span><span class="s">""</span><span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Ok, this simple code downloads an image and shows it in an <em>img</em> tag on the index.html page.</p>
+
+:ET

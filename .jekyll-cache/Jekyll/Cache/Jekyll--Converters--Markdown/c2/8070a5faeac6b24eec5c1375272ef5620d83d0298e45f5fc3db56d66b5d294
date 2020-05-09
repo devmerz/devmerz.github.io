@@ -1,0 +1,90 @@
+I"�<p>Si llegaste hasta aquí entonces lo mas probable es que te paso lo siguiente:</p>
+
+<ul>
+  <li>Desarrollaste una aplicacion Android con Apache Cordova.</li>
+  <li>Tu aplicacion consume un WebService, el protocolo que usa tu WebService es <strong>https</strong></li>
+  <li>Cuando pruebas tu aplicacion en tu smartphone (<strong>cordova run android</strong>) funciona genial.</li>
+  <li>Cuando generas una apk en modo depuracion (<strong>cordova build android</strong>) todo funciona perfecto.</li>
+  <li>Cuando quieres subir tu aplicacion a Google Playstore y generas tu APK firmado (<strong>cordova build android –release</strong>), No funcionan los WebServices :(</li>
+</ul>
+
+<p>Si ese es tu caso, dejame decirte que es un problema que afecta a muchos desarrolladores de Apache Cordova, es muy comun !!!</p>
+
+<p>A continuación, escribiré un parche temporal y por supuesto la solucion para este problema.</p>
+
+<p><br /></p>
+
+<h1 id="porque-ocurre-esto-"><strong>Porque ocurre esto ???</strong></h1>
+
+<p><strong>Apache Cordova no permite llamadas HTTPS a servidores con certificados SSL no confiables instalados en ellos.</strong></p>
+
+<p>Esto tambien ocurre cuando tienes un <strong>certificado SSL autogenerado</strong> instalado en tu servidor.</p>
+
+<p><br /></p>
+
+<h1 id="parche-temporal-para-android"><strong>Parche temporal para Android</strong></h1>
+<p>Como siempre esto es un parche momentaneo y les recomiendo que solo lo usen para pruebas, no para la aplicación final.</p>
+
+<p>Abre el archivo:</p>
+
+<p><strong>“/cordova/platforms/android/CordovaLib/src/org/apache/cordova/engine/S‌​ystemWebViewClient.j‌​ava”</strong></p>
+
+<p>Busca el método <strong>onReceivedSslError</strong> y dentro encontrarás un codigo similar a :</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">try</span> <span class="o">{</span>
+    <span class="n">appInfo</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="na">getApplicationInfo</span><span class="o">(</span><span class="n">packageName</span><span class="o">,</span> <span class="nc">PackageManager</span><span class="o">.</span><span class="na">GET_META_DATA</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">((</span><span class="n">appInfo</span><span class="o">.</span><span class="na">flags</span> <span class="o">&amp;</span> <span class="nc">ApplicationInfo</span><span class="o">.</span><span class="na">FLAG_DEBUGGABLE</span><span class="o">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// debug = true</span>
+        <span class="n">handler</span><span class="o">.</span><span class="na">proceed</span><span class="o">();</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="c1">// debug = false</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onReceivedSslError</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">handler</span><span class="o">,</span> <span class="n">error</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NameNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// When it doubt, lock it out!</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onReceivedSslError</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">handler</span><span class="o">,</span> <span class="n">error</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Debes modificar este método, quedando asi :</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">try</span> <span class="o">{</span>
+    <span class="n">appInfo</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="na">getApplicationInfo</span><span class="o">(</span><span class="n">packageName</span><span class="o">,</span> <span class="nc">PackageManager</span><span class="o">.</span><span class="na">GET_META_DATA</span><span class="o">);</span>
+    <span class="n">handler</span><span class="o">.</span><span class="na">proceed</span><span class="o">();</span>
+
+    <span class="k">return</span><span class="o">;</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NameNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onReceivedSslError</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">handler</span><span class="o">,</span> <span class="n">error</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Eso es todo, con ese cambio estamos ignorando la validacion de seguridad hacia servidores con <strong>certificados SSL autofirmado</strong> o emitidos por <strong>autoridades certificadoras que no son de confianza</strong>.</p>
+
+<p><strong>Utilizado solo para realizar pruebas !!!</strong></p>
+
+<p><br /></p>
+
+<h1 id="la-solución"><strong>La solución</strong></h1>
+<p>Pues la solucion es bastante simple. Instala en tu servidor un <strong>Certificado SSL válido</strong> emitido por una entidad <strong>Certificadora de confianza</strong>.</p>
+
+<p>Aqui tienes una : <a href="https://amielynjunryl.wordpress.com/2014/03/01/list-of-well-known-ssl-certificate-provider/" target="_blank">lista de entidades que te pueden proporcionar un certificado SSL confiable, compatible con Android e iOS</a></p>
+
+<p><br /></p>
+
+<h1 id="articulos-en-stackoverflow-relacionados"><strong>Articulos en StackOverflow relacionados</strong></h1>
+
+<p>Si sabes ingles, estos articulos te pueden ser de mucha ayuda :)</p>
+
+<ol>
+	<li>
+		<a href="http://stackoverflow.com/questions/20036260/phonegap-android-app-ajax-requests-to-https-fail-with-status-0" target="_blank">Phonegap android app ajax requests to https fail with status 0</a>
+
+	</li>
+
+	<li>
+		<a href="http://stackoverflow.com/questions/32148646/in-cordova-on-android-app-requests-with-https-fail-but-same-request-using-http-s" target="_blank">In cordova on android app requests with https fail but same request using http succeed</a>
+		
+	</li>
+		
+</ol>
+:ET

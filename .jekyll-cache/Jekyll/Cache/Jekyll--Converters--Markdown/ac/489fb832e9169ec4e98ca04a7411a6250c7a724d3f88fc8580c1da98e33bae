@@ -1,0 +1,74 @@
+I"�<p><img src="/assets/comandos-utiles-apache-cordova/cordova-logo.png" /></p>
+
+<p><a href="https://cordova.apache.org/" target="_blank">Apache cordova</a> es una tecnologia que te permite crear aplicaciones moviles para multiples plataformas utilizando tecnologias estandar como HTML5, CSS3 y JAVASCRIPT.</p>
+
+<p>A continuación veras los comandos que más utilizo a la hora de crear aplicaciones.</p>
+
+<p><br /></p>
+
+<h2 id="iniciar-un-proyecto">Iniciar un proyecto</h2>
+
+<p>Este comando iniciara un proyecto llamado <code class="highlighter-rouge">MiApp</code> dentro de una carpeta con el mismo nombre.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">create</span> <span class="no">MiApp</span></code></pre></figure>
+
+<p>Si es que desea darle un identificador a su proyecto, el comando es el siguiente:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">create</span> <span class="no">CarpetaMiAplicacion</span> <span class="n">com</span><span class="p">.</span><span class="nf">miempresa</span><span class="p">.</span><span class="nf">miapp</span> <span class="no">MiApp</span></code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="plataformas">Plataformas</h2>
+
+<p><strong>Añadir plataformas</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cd</span> <span class="no">MiApp</span>
+<span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">android</span>
+<span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">ios</span>
+<span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">amazon</span><span class="o">-</span><span class="n">fireos</span>
+<span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">blackberry10</span>
+<span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">firefoxos</span></code></pre></figure>
+
+<p><strong>Ver las plataformas instaladas</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">platforms</span> <span class="n">ls</span></code></pre></figure>
+
+<p><strong>Eliminar una plataforma</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">platform</span> <span class="n">remove</span> <span class="n">android</span></code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="plugins">Plugins</h2>
+
+<p><strong>Añadir plugins</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">cordova</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">network</span><span class="o">-</span><span class="n">information</span></code></pre></figure>
+
+<p><strong>Ver los plugins instalados</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">plugin</span> <span class="n">list</span></code></pre></figure>
+
+<p><strong>Eliminar plugins</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">plugin</span> <span class="n">remove</span> <span class="n">cordova</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">network</span><span class="o">-</span><span class="n">information</span></code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="construir-y-compilar-una-aplicación">Construir y compilar una aplicación</h2>
+
+<p><strong>Construir la aplicacion</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">build</span></code></pre></figure>
+
+<p><strong>Probar la aplicacion en un simulador (Android)</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">emulate</span> <span class="n">android</span></code></pre></figure>
+
+<p><strong>Probar la aplicacion en un dispositivo</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">run</span> <span class="n">android</span></code></pre></figure>
+
+<p>No olvides activar la <code class="highlighter-rouge">depuración USB</code> en el dispositivo, antes de probar en un dispositivo Android.</p>
+
+:ET
