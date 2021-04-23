@@ -22,15 +22,39 @@ Al momento de crear este blog no tenia ni idea de que nombre ponerle. Por ese en
 
 # 🔵 ¿Porque no tienes nada en tu github?
 
-No es porque no trabaje jeje, la razón principal es porque uso bastante más gitlab para proyectos privados al público en general.
+No es porque no trabaje jeje, la razón principal es porque uso bastante más gitlab para proyectos privados.
 
+
+# 🔵 ¿Cuanto tiempo trabajas como desarrollador de software?
+
+Tengo 8 años de experiencia laboral en desarrollo web y desarrollo móvil.
+
+
+<p>Las tecnologias y herrmientas que manejo actualmente son :</p>
+
+-   Angular
+-   NodeJS
+-   AngularJS   
+-   Git
+-   Flutter
+-   Java
+-   Postgres
+-   HTML5, CSS3 y el clásico Bootstrap
+
+He trabajado con:
+-   Java EE
+-   Php (Codeigniter)
+-   Apache Cordova
+-   Ionic Framework
+-   Mysql
 
 # 🔵 Quiero trabajar contigo
 
-Si te gustaria que desarrolle tu página web, sistema o aplicación móvil puedes contactarme al correo: elmer.developer@gmail.com
+Si te gustaria que desarrolle tu página web, sistema web o aplicación móvil puedes contactarme al correo: elmer.developer@gmail.com
 
 
 <br>
 <br>
 
-Me despido y les mando Saludos !!!
+Y nada mas por ahora <br>
+Me despido y les mando muchos saludos !!! :)
