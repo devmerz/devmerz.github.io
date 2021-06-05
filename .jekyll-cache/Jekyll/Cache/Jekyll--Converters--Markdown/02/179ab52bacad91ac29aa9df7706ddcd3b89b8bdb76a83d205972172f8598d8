@@ -1,0 +1,205 @@
+I"�:<p>(Ultima actualización de este post: 05/06/2021) <br />
+Actualización 2021: Amigos visitantes del blog y especificamente de este articulo. Los procedimientos mostrados en este articulo ya no funcionan. El plugin <strong>cordova-plugin-fcm</strong> parece que ha dejado de recibir soporte y <strong>ya no funciona correctamente</strong>
+<br /></p>
+<hr />
+
+<p><img src="/assets/apache-cordova-push-android-fcm/imagen-principal.png" /></p>
+
+<p>En el siguiente articulo usted aprendera como Configurar un Proyecto en Console Developers Google y  <a href="https://firebase.google.com/docs/cloud-messaging/" target="_blank">Firebase Google Cloud Messaging</a> para enviar notificaciones PUSH a dispositivos Android, a traves de FCM.</p>
+
+<p><br /></p>
+
+<h2 id="crear-un-nuevo-proyecto"><strong>Crear un nuevo proyecto</strong></h2>
+
+<ul>
+  <li>
+    <p>Nos dirigimos a <a href="https://console.developers.google.com/">Console Developers Google</a></p>
+  </li>
+  <li>
+    <p>Click en la opción <strong>Crear proyecto</strong>.</p>
+  </li>
+  <li>
+    <p>Nos pedirá un nombre para nuestro proyecto, en nuestro caso se llamara <strong>Notificacion push android fcm</strong>, Creamos el proyecto.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/crear-proyecto notificaciones-push-android.png" /></p>
+
+<p><br /></p>
+
+<h2 id="firebase-cloud-messaging"><strong>Firebase Cloud Messaging</strong></h2>
+
+<p>En el menú aparece la opción Biblioteca. le damos click a <strong>Google Cloud Messaging</strong>. Esto nos llevara a la pagina de firebase de google.</p>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/habilitando-fcm.png" /></p>
+
+<p>El enlace nos llevara a <a href="https://firebase.google.com/docs/cloud-messaging/">Firebase Google Cloud Messaging</a></p>
+
+<p>Ahora debemos <strong>Ir a la consola</strong>, que se encuentra en la esquina superios derecha.
+<img src="/assets/apache-cordova-push-android-fcm/ir-a-la-consola.png" /></p>
+
+<p><br /></p>
+
+<h2 id="crear-el-proyecto-en-firebase-console"><strong>Crear el proyecto en Firebase Console</strong></h2>
+
+<ul>
+  <li>Click en el botón <strong>CREAR NUEVO PROYECTO</strong></li>
+  <li>Nos pedirá los siguientes campos <strong>Nombre del proyecto</strong> y <strong>Pais/Region</strong></li>
+</ul>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/nuevo-proyecto-fcm.png" /></p>
+
+<p>Entonces el proyecto fue creado. y seremos redirigidos a la siguiente pantalla:</p>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/anade-firebase-a-tu-proyecto.png" /></p>
+
+<ul>
+  <li>Click en: Añade Firebase a tu aplicación de Android.</li>
+  <li>En la pantalla que aparecerá introducimos el Nombre del paquete (Package Name) de la aplicación, en mi caso creare el APP con el package name igual a com.miappfcm.app.</li>
+  <li>Click en Añadir Aplicación.</li>
+</ul>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/generando-el-json.png" /></p>
+
+<p><br /></p>
+
+<h2 id="descarga-del-archivo-google-servicesjson"><strong>Descarga del archivo google-services.json</strong></h2>
+
+<p>Dando click en Añadir Aplicación, se descargara un archivo llamado google-services.json. Este archivo contiene toda la información de nuestro proyecto(Google Firebase) y también nos ayudara a que el dispositivo pueda recibir las notificaciones.</p>
+
+<p>Este archivo debemos ponerlo en <strong>LA RAIZ DEL PROYECTO</strong>.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">MiApp</span><span class="o">/</span><span class="n">google</span><span class="o">-</span><span class="n">services</span><span class="p">.</span><span class="nf">json</span></code></pre></figure>
+
+<p><br /></p>
+
+<h3 id="creando-el-proyecto-adicionando-plataforma-android-instalando-plugin-fcm"><strong>Creando el Proyecto, Adicionando plataforma Android, Instalando plugin FCM</strong></h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">create</span> <span class="no">MiApp</span> <span class="n">com</span><span class="p">.</span><span class="nf">miappfcm</span><span class="p">.</span><span class="nf">app</span> <span class="no">MiAppPushFCM</span>
+<span class="n">cd</span> <span class="no">MiAppPushFCM</span>
+<span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">android</span>
+<span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">cordova</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">fcm</span>
+<span class="n">cordova</span> <span class="n">run</span> <span class="n">android</span></code></pre></figure>
+
+<p>NO LO OLVIDES !!! El Package Name es : <strong>com.miappfcm.app</strong> y debes mover el archivo google-services.json a la dirección indicada mas arriba.</p>
+
+<p>El repositorio del plugin que utilizaremos es <a href="https://github.com/fechanique/cordova-plugin-fcm">Cordova plugin FCM</a></p>
+
+<p>Y no olvides probar tu app en tu smartphone ;)</p>
+
+<p><br /></p>
+
+<h2 id="adicionando-código"><strong>Adicionando código</strong></h2>
+
+<p>Entonces dentro de nuestra estructura de proyectos, abrimos el archivo: <strong>/www/js/index.js</strong></p>
+
+<p>Creare una funcion llamada <strong>pushNotification()</strong>, y dentro pondre un codigo que: Muestra un “alert” con la informacion JSON que contiene la notificacion. El if/else indica si la notificacion se presiono desde la barra de notificaciones o no.</p>
+
+<p>Mi index.js quedaria asi:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// Application Constructor</span>
+    <span class="na">initialize</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">deviceready</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onDeviceReady</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="c1">// deviceready Event Handler</span>
+    <span class="na">onDeviceReady</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">receivedEvent</span><span class="p">(</span><span class="dl">'</span><span class="s1">deviceready</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">pushNotification</span><span class="p">();</span>
+    <span class="p">},</span>
+
+    <span class="c1">// Update DOM on a Received Event</span>
+    <span class="na">receivedEvent</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">parentElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">listeningElement</span> <span class="o">=</span> <span class="nx">parentElement</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.listening</span><span class="dl">'</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">receivedElement</span> <span class="o">=</span> <span class="nx">parentElement</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.received</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">listeningElement</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">style</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">display:none;</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">receivedElement</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">style</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">display:block;</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Received Event: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">id</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">pushNotification</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">FCMPlugin</span><span class="p">.</span><span class="nx">onNotification</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">wasTapped</span><span class="p">){</span>
+          <span class="nx">alert</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+          <span class="nx">alert</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span></code></pre></figure>
+
+<p>Esa función es lo único que necesitamos agregar … por ahora. Para enriquecer más tu aplicación existen más funciones que encuentras en la <a href="https://github.com/fechanique/cordova-plugin-fcm" target="_blank">Documentación del plugin.</a></p>
+
+<p>Compilamos de nuevo la aplicación en nuestro smartphone.</p>
+
+<p><br /></p>
+
+<h2 id="probando-la-aplicación"><strong>Probando la aplicación</strong></h2>
+
+<p>Para realizar una prueba simple, utilizaremos una “app” que el plugin nos ofrece dentro de su pagina de github, Ingresa a : <a href="https://cordova-plugin-fcm.appspot.com" target="_blank">https://cordova-plugin-fcm.appspot.com</a></p>
+
+<ol>
+  <li>
+    <p>En el primer campo ponemos el Nombre de paquete que usa nuestra aplicación.</p>
+  </li>
+  <li>
+    <p>En el segundo campo debemos poner el <strong>API KEY</strong> de tu proyecto Firebase, esto lo obtenemos dentro de nuestro proyecto en la consola de Firebase: Ingresa a tu <strong>Proyecto en Firebase</strong> -&gt; click en las opciones de tu aplicación Android -&gt; click en <strong>Configuración</strong> -&gt; Click en la pestaña <strong>CLOUD MESSAGING</strong> -&gt; En el área <strong>CREDENCIALES DEL PROYECTO</strong>, copiar la <strong>CLAVE DE SERVIDOR</strong>.</p>
+  </li>
+  <li>En el campo Title ponemos lo que queramos, este sera el titulo de la Notificación Push.</li>
+  <li>En Message pues ponemos el mensaje de la notificación.</li>
+</ol>
+
+<p>Los demás campos no lo llenaremos debido a que solo es una prueba.</p>
+
+<p>En mi caso quedaría algo así:</p>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/probando-fcm.png" /></p>
+
+<p>Presionamos <strong>SEND</strong>. Si todo salio bien, deberíamos obtener el mensaje:</p>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/notificacion-enviada.png" width="300" style="margin:0 auto;" /></p>
+
+<p>Y en la aplicación veríamos lo siguiente:</p>
+
+<div>
+	<img src="/assets/apache-cordova-push-android-fcm/recibido-1.jpg" width="300" style="float:left;" />
+	<img src="/assets/apache-cordova-push-android-fcm/recibido-2.jpg" width="300" style="float:right;" />
+	<div style="clear:both;"></div>
+</div>
+
+<p><br /></p>
+
+<p>La prueba de arriba fue cuando la aplicación estaba cerrada.</p>
+
+<p><strong>SI, LAS NOTIFICACIONES PUSH IGUAL DEBEN LLEGAR CUANDO LA APLICACION ESTA CERRADA.</strong></p>
+
+<p>Ok pero que pasa cuando estamos dentro de la aplicación ??? … pues esto:</p>
+
+<div>
+	<img src="/assets/apache-cordova-push-android-fcm/fuera-app-android.jpg" width="300" style="float:left;" />
+	<img src="/assets/apache-cordova-push-android-fcm/dentro-app-android.jpg" width="300" style="float:right;" />
+	<div style="clear:both;"></div>
+</div>
+
+<p><br />
+Recuerdan el trozo de codigo que adicionamos en index.js, Pues esto es lo que hace. Si presionamos la notificación push que llego desde la barra de notificaciones mostrara la segunda imagen, si estamos dentro de la aplicación y llega la notificación push se mostrara la primera imagen … Lo importante que quería mostrar es que la información que llega de la notificación se puede “parsear” en un JSON y utilizarlo de la manera que nuestra aplicación lo necesite.</p>
+
+<p><strong>Pues bien !!! Funciona !!!</strong></p>
+
+<p>Y ahora ???</p>
+
+<p>Verán, En la realidad para que una notificación llegue a los móviles, debe haber un “Disparador Del Evento”. 
+El <strong>Back-end</strong> de una aplicación sera quien sea el “Disparador”. Como existen muchos lenguajes para back-end (Php, Java, Python), Y no puedo hacer un tutorial para cada uno. Pues te doy 1 consejo:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Utiliza</span> <span class="no">REST</span> <span class="no">API</span><span class="o">.</span> <span class="no">En</span> <span class="n">la</span> <span class="n">documentaci</span><span class="err">ó</span><span class="n">n</span> <span class="n">del</span> <span class="n">plugin</span> <span class="n">encontraras</span> <span class="n">mas</span> <span class="n">informaci</span><span class="err">ó</span><span class="n">n</span></code></pre></figure>
+
+<p>Personalmente lo probé con un back-end hecho en PHP y otro en JAVA, Todo funciona perfectamente.</p>
+
+<p>Y bien, Eso es todo !!!</p>
+
+<p>Cualquier duda o consulta, en los comentarios por favor.</p>
+
+:ET

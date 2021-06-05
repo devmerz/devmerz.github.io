@@ -1,0 +1,3 @@
+I"c<p>(Ultima actualización de este post: 05/06/2021) <br />
+Los procedimientos mostrados en este articulo ya no funcionan, más que todo el problema principal es del plugin <code>cordova-plugin-fcm</code> que parece que ha dejado de recibir soporte y <code>ya no funciona correctamente</code>, lo que ocaciona muchos problemas a la hora de utilizarse.</p>
+:ET
