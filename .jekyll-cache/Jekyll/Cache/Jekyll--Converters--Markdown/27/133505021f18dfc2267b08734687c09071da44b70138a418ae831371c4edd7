@@ -1,0 +1,10 @@
+I"H<p>En este articulo aprenderás como configurar y crear una aplicacion hecha con Apache Cordova capaz de recibir notificaciones push, mediante la plataforma Firebase (FCM).</p>
+
+<p><br /></p>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/imagen-principal.png" /></p>
+
+<p>En el siguiente articulo usted aprendera como Configurar un Proyecto en Console Developers Google y  <a href="https://firebase.google.com/docs/cloud-messaging/" target="_blank">Firebase Google Cloud Messaging</a> para enviar notificaciones PUSH a dispositivos Android, a traves de FCM.</p>
+
+<p><br /></p>
+:ET

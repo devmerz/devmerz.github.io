@@ -1,0 +1,37 @@
+I"�<p>En este articulo aprenderás como configurar y crear una aplicacion hecha con Apache Cordova capaz de recibir notificaciones push, mediante la plataforma Firebase (FCM).</p>
+
+<p><br /></p>
+
+<p><img src="/assets/apache-cordova-push-android-fcm/imagen-principal.png" /></p>
+
+<p>En el siguiente articulo usted aprendera como Configurar un Proyecto en Console Developers Google y  <a href="https://firebase.google.com/docs/cloud-messaging/" target="_blank">Firebase Google Cloud Messaging</a> para enviar notificaciones PUSH a dispositivos Android, a traves de FCM.</p>
+
+<p><br /></p>
+
+<h1 id="configurar-proyecto-en-firebase-console">Configurar proyecto en Firebase Console</h1>
+
+<p>Nos dirigimos a <a href="https://console.firebase.google.com" target="_blank">Firebase console</a></p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/crear-proyecto.png" /></p>
+
+<p>Nuestro proyecto se llamará <strong>Notificaciones push cordova</strong>, luego presionamos en continuar:</p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/nombre-proyecto.png" /></p>
+
+<p>Nos pedirá integrar el proyecto con Google Analytics, en este caso no lo habilitaremos, presionamos en <strong>Crear proyecto</strong>, una vez terminado el proceso el proyecto estará creado: presionamos en continuar</p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/proyecto-creado.png" /></p>
+
+<p>Seleccionamos la opción <strong>Configuración del proyecto</strong>
+<img src="/assets/push-apache-cordova-actualizado/configuracion-proyecto.png" /></p>
+
+<p>Nos vamos al pestaña General al final se encuentra la opcion para crear la configuracion para la aplicacion, en este caso seleccionamos la opcion Android:</p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/android-proyecto.png" /></p>
+
+<p>En el formulario que nos presenta solo llenamos el campo <strong>paquete del proyecto android</strong>
+<img src="/assets/push-apache-cordova-actualizado/registrar-app.png" /></p>
+
+<h1 id="crear-aplicación">Crear aplicación</h1>
+<h1 id="test">Test</h1>
+:ET

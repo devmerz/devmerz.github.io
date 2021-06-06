@@ -1,0 +1,176 @@
+I"�G<p><img src="/assets/apache-cordova-push-android-fcm/imagen-principal.png" /></p>
+
+<p>En el siguiente articulo aprenderás a configurar un proyecto en <a href="https://console.firebase.google.com" target="_blank">Firebase Console</a> para enviar notificaciones PUSH a dispositivos Android, La aplicación será construida usando Apache Cordova.</p>
+
+<p><br /></p>
+
+<h1 id="configurar-proyecto-en-firebase-console">Configurar proyecto en Firebase Console</h1>
+
+<p>Nos dirigimos a <a href="https://console.firebase.google.com" target="_blank">Firebase console</a> y creamos un nuevo proyecto;</p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/crear-proyecto.png" width="100%" /></p>
+
+<p>Nuestro proyecto se llamará <code>Notificaciones push cordova</code>:</p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/nombre-proyecto.png" /></p>
+
+<p>Presionamos en continuar y nos pedirá integrar el proyecto con Google Analytics, en este caso no lo habilitaremos, presionamos en <strong>Crear proyecto</strong></p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/analytics-proyecto.png" /></p>
+
+<p>Una vez terminado el proceso el proyecto estará creado, presionamos en continuar
+<img src="/assets/push-apache-cordova-actualizado/proyecto-creado.png" /></p>
+
+<p>En el panel de administracion seleccionamos la opción <code>Configuración del proyecto</code>
+<img src="/assets/push-apache-cordova-actualizado/configuracion-proyecto.png" /></p>
+
+<p>Nos vamos al pestaña <code>General</code> al final encontraremos la opcion para crear la configuración para la aplicacion, en este caso seleccionamos la opcion Android:</p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/android-proyecto.png" /></p>
+
+<p>En el formulario que nos presenta solo llenamos el campo <code>paquete del proyecto android</code>, los demas campos son opcionales, Mas adelante crearemos el proyecto con el nombre de paquete igual a <code>com.notificacionespushcordova.app</code>  presionamos <strong>Registrar app</strong>
+<img src="/assets/push-apache-cordova-actualizado/registrar-app.png" /></p>
+
+<h3 id="descargar-archivo-google-servicesjson">Descargar archivo google-services.json</h3>
+<p><img src="/assets/push-apache-cordova-actualizado/descargar-google-services.png" />
+ok, guarda el archivo google-services.json que mas adelante lo pondremos en la raiz del proyecto.</p>
+
+<h1 id="crear-aplicación">Crear aplicación</h1>
+
+<p>Ejecutamos los siguientes comandos:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">create</span> <span class="n">miproyecto</span> <span class="n">com</span><span class="p">.</span><span class="nf">notificacionespushcordova</span><span class="p">.</span><span class="nf">app</span> <span class="n">miapp</span>
+<span class="n">cd</span> <span class="n">miproyecto</span>
+<span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">android</span>
+<span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">cordova</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">firebasex</span>
+<span class="n">cordova</span> <span class="n">run</span> <span class="n">android</span></code></pre></figure>
+
+<p>En este punto se te presentará el siguiente error:</p>
+
+<blockquote>
+  <p>This project uses AndroidX dependencies, but the ‘android.useAndroidX’ property is not enabled. Set this property to true in the gradle.properties file and retry.</p>
+</blockquote>
+
+<p>Para solucionar este error tenemos que modificar el archivo config.xml, devemos adicionar la linea:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">preference</span> <span class="nb">name</span><span class="o">=</span><span class="s2">"AndroidXEnabled"</span> <span class="n">value</span><span class="o">=</span><span class="s2">"true"</span> <span class="o">/&gt;</span></code></pre></figure>
+
+<p>Quedando el archivo asi:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="p">?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s1">'1.0'</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">?</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">widget</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"com.notificacionespushcordova.app"</span> <span class="n">version</span><span class="o">=</span><span class="s2">"1.0.0"</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">"http://www.w3.org/ns/widgets"</span> <span class="n">xmlns</span><span class="ss">:cdv</span><span class="o">=</span><span class="s2">"http://cordova.apache.org/ns/1.0"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">name</span><span class="o">&gt;</span><span class="n">miapp</span><span class="o">&lt;</span><span class="sr">/name&gt;
+    &lt;description&gt;
+        A sample Apache Cordova application that responds to the deviceready event.
+    &lt;/</span><span class="n">description</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">author</span> <span class="n">email</span><span class="o">=</span><span class="s2">"dev@cordova.apache.org"</span> <span class="n">href</span><span class="o">=</span><span class="s2">"http://cordova.io"</span><span class="o">&gt;</span>
+        <span class="no">Apache</span> <span class="no">Cordova</span> <span class="no">Team</span>
+    <span class="o">&lt;</span><span class="sr">/author&gt;
+    &lt;content src="index.html" /</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">access</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">allow</span><span class="o">-</span><span class="n">intent</span> <span class="n">href</span><span class="o">=</span><span class="s2">"http://*/*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">allow</span><span class="o">-</span><span class="n">intent</span> <span class="n">href</span><span class="o">=</span><span class="s2">"https://*/*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">allow</span><span class="o">-</span><span class="n">intent</span> <span class="n">href</span><span class="o">=</span><span class="s2">"tel:*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">allow</span><span class="o">-</span><span class="n">intent</span> <span class="n">href</span><span class="o">=</span><span class="s2">"sms:*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">allow</span><span class="o">-</span><span class="n">intent</span> <span class="n">href</span><span class="o">=</span><span class="s2">"mailto:*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">allow</span><span class="o">-</span><span class="n">intent</span> <span class="n">href</span><span class="o">=</span><span class="s2">"geo:*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">platform</span> <span class="nb">name</span><span class="o">=</span><span class="s2">"android"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">allow</span><span class="o">-</span><span class="n">intent</span> <span class="n">href</span><span class="o">=</span><span class="s2">"market:*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/platform&gt;
+    &lt;platform name="ios"&gt;
+        &lt;allow-intent href="itms:*" /</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">allow</span><span class="o">-</span><span class="n">intent</span> <span class="n">href</span><span class="o">=</span><span class="s2">"itms-apps:*"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/platform&gt;
+    &lt;preference name="AndroidXEnabled" value="true" /</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/widget&gt;</span></code></pre></figure>
+
+<p>Si volvemos a volvermos a ejecutar: cordova run android, se ejecutara sin problemas:</p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/app-proyecto.png" /></p>
+
+<p>Perfecto, ahora un poco de código. En el archivo index.js vamos a cambiar el contenido original por:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="s1">'deviceready'</span><span class="p">,</span> <span class="n">onDeviceReady</span><span class="p">,</span> <span class="kp">false</span><span class="p">);</span>
+
+<span class="n">function</span> <span class="n">onDeviceReady</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s1">'deviceready'</span><span class="p">).</span><span class="nf">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">);</span>
+
+     <span class="n">window</span><span class="o">.</span><span class="no">FirebasePlugin</span><span class="p">.</span><span class="nf">getToken</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">"miToken"</span><span class="p">).</span><span class="nf">value</span> <span class="o">=</span> <span class="n">token</span><span class="p">;</span>
+    <span class="p">},</span> <span class="n">function</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+    <span class="p">});</span>
+    
+    <span class="n">window</span><span class="o">.</span><span class="no">FirebasePlugin</span><span class="p">.</span><span class="nf">onTokenRefresh</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">"Actualizar para obtener nuevo token: "</span> <span class="o">+</span> <span class="n">token</span><span class="p">);</span>
+    <span class="p">},</span> <span class="n">function</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">alert</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+    <span class="p">});</span>
+    
+    <span class="n">window</span><span class="o">.</span><span class="no">FirebasePlugin</span><span class="p">.</span><span class="nf">onMessageReceived</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="nf">messageType</span> <span class="o">===</span> <span class="s2">"notification"</span><span class="p">){</span>
+            <span class="n">alert</span><span class="p">(</span><span class="s2">"Notificación recibida dentro de la aplicación"</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="nf">tap</span><span class="p">){</span>
+                <span class="n">alert</span><span class="p">(</span><span class="s2">"Presionada en: "</span> <span class="o">+</span> <span class="n">message</span><span class="p">.</span><span class="nf">tap</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="n">function</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
+    <span class="p">});</span> 
+<span class="p">}</span></code></pre></figure>
+
+<p>Las funciones de getToken, onTokenRefresh, onMessageReceived son proporcionadas por el plugin cordova-plugin-firebasex, puedes encontrar mas información acerca de estas y otras funciones en: 
+<a href="https://github.com/dpa99c/cordova-plugin-firebasex" target="_blank">cordova-plugin-firebasex</a>. En el archivo index.html vamos a insertar un textarea con un id llamado miToken, quedando asi:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Security-Policy"</span> <span class="na">content=</span><span class="s">"default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"format-detection"</span> <span class="na">content=</span><span class="s">"telephone=no"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"msapplication-tap-highlight"</span> <span class="na">content=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"initial-scale=1, width=device-width, viewport-fit=cover"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"color-scheme"</span> <span class="na">content=</span><span class="s">"light dark"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/index.css"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Hello World<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>Apache Cordova<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"deviceready"</span> <span class="na">class=</span><span class="s">"blink"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"miToken"</span> <span class="na">cols=</span><span class="s">"30"</span> <span class="na">rows=</span><span class="s">"10"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+                <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"event listening"</span><span class="nt">&gt;</span>Connecting to Device<span class="nt">&lt;/p&gt;</span>
+                <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"event received"</span><span class="nt">&gt;</span>Device is Ready<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"cordova.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>Si compilamos la aplicación veremos lo siguiente:</p>
+
+<blockquote>
+  <p>No olvides poner el archivo google-services.json en la raiz de nuestro proyecto</p>
+</blockquote>
+
+<p><img src="/assets/push-apache-cordova-actualizado/app-con-token.png" /></p>
+
+<p>Ok, entonces hasta este punto ya tenemos todo integrado y la aplicación ya genera un token para que podamos realizar las pruebas. Copia el token generado en el textarea.</p>
+
+<h1 id="test">Test</h1>
+
+<p>Para la prueba rápida volvemos a la consola de firebase y buscamos la seccion de Cloud messaging y presionamos el boton de <strong>Send your first messsage</strong></p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/send-first-message.png" /></p>
+
+<p>En el formulario que nos aparece debemos llenar los campos: Titulo de la notificación y Texto de la notificación como campos requeridos. Luego presionamos en “Enviar mensaje de prueba” y nos pedirá un token, ese token es el token que copiamos de el textarea con anterioridad, lo pegamos, adicionamos y presionamos en el boton “Probar”</p>
+
+<p><img src="/assets/push-apache-cordova-actualizado/token-app.png" /></p>
+
+<p>Funciona !!!
+<img src="/assets/push-apache-cordova-actualizado/notificacion-funciona.png" /></p>
+
+<p>La notificación push llegará tanto si estamos con la aplicación abierta o cerrada.</p>
+
+:ET
