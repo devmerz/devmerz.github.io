@@ -6,7 +6,7 @@ permalink: :title
 ---
 
 (Ultima actualización de este post: 05/06/2021) <br />
-Los procedimientos mostrados en este articulo ya no funcionan, más que todo el problema principal es del plugin <code>cordova-plugin-fcm</code> que parece que ha dejado de tener soporte y <code>ya no funciona correctamente</code>, lo que ocaciona muchos problemas a la hora de utilizarse. 
+Los procedimientos mostrados en este articulo ya no funcionan debido a que el plugin utilizado ha dejado de tener soporte, tenemos una <a href="https://devmerz.github.io/notificaciones-push-apache-cordova-fcm-android-2021">Version actualizada del tutorial acá.</a> 
 
 <br />
 
