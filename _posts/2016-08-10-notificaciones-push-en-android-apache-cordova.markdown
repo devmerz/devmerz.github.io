@@ -5,15 +5,13 @@ categories: android apache cordova notificaciones push
 permalink: :title
 ---
 
-<div style="border:1px solid red; background: #F2DEDE; padding:15px;">
-<strong>ADVERTENCIA !!!</strong>
-<p>
-Aproximadamente en Junio del 2016 Google cambio el metodo de envio 
-de notificaciones push de <strong>GCM</strong> a <strong>FCM</strong>. Por lo tanto este tutorial solo es 
-funcional para <strong>API KEYs</strong> generados antes de Junio del 2016.
-<br/>
-Te recomendamos utilizar <strong>FCM (Firebase Cloud Messaging)</strong> que funciona de maravilla para enviar Notificaciones Push a aplicaciones hechas con Apache Cordova para Android -> <a href="https://devmerz.github.io/notificaciones-push-android-apache-cordova-fcm" target="_blank">Apache cordova con Android y FCM</a>
-</p>
+<div class="alert alert-warning">
+    <p>
+    Aproximadamente en Junio del 2016 Google cambio el metodo de envio 
+    de notificaciones push de <strong>GCM</strong> a <strong>FCM</strong>. Por lo tanto este tutorial solo es 
+    funcional para <strong>API KEYs</strong> generados antes de Junio del 2016.
+    Te recomendamos utilizar <strong>FCM (Firebase Cloud Messaging)</strong> que funciona de maravilla para enviar Notificaciones Push a aplicaciones hechas con Apache Cordova para Android -> <a href="https://devmerz.github.io/notificaciones-push-android-apache-cordova-fcm" target="_blank">Apache cordova con Android y FCM</a>
+    </p>
 </div>
 
 <br/>

@@ -5,8 +5,10 @@ categories: apache cordova android notificaciones push fcm gcm Firebase Cloud Me
 permalink: :title
 ---
 
-(Ultima actualización de este post: 05/06/2021) <br />
-Los procedimientos mostrados en este articulo ya no funcionan debido a que el plugin utilizado ha dejado de tener soporte, tenemos una <a href="https://devmerz.github.io/notificaciones-push-apache-cordova-fcm-android-2021">Version actualizada del tutorial acá.</a> 
+<div class="alert alert-warning">
+  (Ultima actualización de este post: 05/06/2021) <br />
+  Los procedimientos mostrados en este articulo ya no funcionan debido a que el plugin utilizado ha dejado de tener soporte, tenemos una <a href="https://devmerz.github.io/notificaciones-push-apache-cordova-fcm-android-2021">Version actualizada del tutorial acá.</a> 
+</div>
 
 <br />
 

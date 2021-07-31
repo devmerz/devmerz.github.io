@@ -16,7 +16,7 @@ layout: default
                 {{ post.title }}
             </a>
             </h2>
-            {{ post.excerpt }}
+            {{ post.excerpt | truncatewords: 2050}}
         </li>
         {% endfor %}
     </ul>
