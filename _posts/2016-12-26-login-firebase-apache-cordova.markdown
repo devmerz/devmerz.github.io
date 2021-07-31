@@ -94,6 +94,8 @@ function login(){
 
 Dentro de **index.html** crearemos un formulario simple (email, contraseña). y al boton "VERIFICAR USUARIO" de la aplicacion le adicionamos la siguiente funcion **onclick="login()"**
 
-<img src="/assets/login-firebase/LoginAndroid.png" style="width:250px;"/>
+<div class="contenedor-imagen">
+  <img src="/assets/login-firebase/LoginAndroid.png" style="width:250px;"/>
+</div>
 
 

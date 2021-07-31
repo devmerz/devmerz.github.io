@@ -8,7 +8,9 @@ permalink: :title
 
 En el siguiente articulo aprenderás a configurar un proyecto en <a href="https://console.firebase.google.com" target="_blank">Firebase Console</a> para enviar notificaciones PUSH a dispositivos Android, La aplicación será construida usando Apache Cordova.
 
-<img src="/assets/apache-cordova-push-android-fcm/imagen-principal.png" />
+<div class="contenedor-imagen">
+    <img src="/assets/apache-cordova-push-android-fcm/imagen-principal.png" />
+</div>
 
 
 
@@ -21,37 +23,58 @@ En el siguiente articulo aprenderás a configurar un proyecto en <a href="https:
 Nos dirigimos a <a href="https://console.firebase.google.com" target="_blank">Firebase console</a> y creamos un nuevo proyecto;
 
 
-<img src="/assets/push-apache-cordova-actualizado/crear-proyecto.png" width="100%">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/crear-proyecto.png" width="100%">
+</div>
 
+<br>
 
 Nuestro proyecto se llamará <code>Notificaciones push cordova</code>:
 
-<img src="/assets/push-apache-cordova-actualizado/nombre-proyecto.png">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/nombre-proyecto.png">
+</div>
 
-
+<br>
 Presionamos en continuar y nos pedirá integrar el proyecto con Google Analytics, en este caso no lo habilitaremos, presionamos en **Crear proyecto**
 
-<img src="/assets/push-apache-cordova-actualizado/analytics-proyecto.png">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/analytics-proyecto.png">
+</div>
 
+<br>
 Una vez terminado el proceso el proyecto estará creado, presionamos en continuar
-<img src="/assets/push-apache-cordova-actualizado/proyecto-creado.png">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/proyecto-creado.png">
+</div>
+<br>
 
 En el panel de administracion seleccionamos la opción <code>Configuración del proyecto</code>
-<img src="/assets/push-apache-cordova-actualizado/configuracion-proyecto.png">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/configuracion-proyecto.png">
+</div>
+<br>
 
 Nos vamos al pestaña <code>General</code> al final encontraremos la opcion para crear la configuración para la aplicacion, en este caso seleccionamos la opcion Android:
 
-<img src="/assets/push-apache-cordova-actualizado/android-proyecto.png">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/android-proyecto.png">
+</div>
 
 
 En el formulario que nos presenta llenaremos el campo <code>Nombre del paquete de android</code>, los demas campos son opcionales, Mas adelante crearemos el proyecto con el nombre de paquete igual a <code>com.notificacionespushcordova.app</code>
 
 <br>
 Presionamos **Registrar app**
-<img src="/assets/push-apache-cordova-actualizado/registrar-app.png">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/registrar-app.png">
+</div>
 
+<br>
 Debemos descargar el archivo google-services.json que no da:
-<img src="/assets/push-apache-cordova-actualizado/descargar-google-services.png">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/descargar-google-services.png">
+</div>
 <br>
 <br>
 ok, guarda el archivo <code>google-services.json</code> que mas adelante lo debemos poner en la raiz del proyecto.
@@ -117,7 +140,9 @@ Quedando el archivo asi:
 
 Si volvemos a ejecutar la aplicación, se ejecutara sin problemas:
 
-<img src="/assets/push-apache-cordova-actualizado/app-proyecto.png">
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/app-proyecto.png">
+</div>
 
 Perfecto, ahora un poco de código. En el archivo index.js vamos a cambiar el contenido original por:
 
@@ -188,7 +213,9 @@ El textarea nos servirá para visualizar el token de nuestro dispositivo. Si com
 > No olvides poner el archivo google-services.json en la raiz de nuestro proyecto para que funcione sin problemas
 
 
-<img src="/assets/push-apache-cordova-actualizado/app-con-token.png" />
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/app-con-token.png" />
+</div>
 
 Ok, entonces hasta este punto ya tenemos todo integrado y la aplicación ya genera un token para que podamos realizar las pruebas. Copia el token generado en el textarea.
 
@@ -201,8 +228,11 @@ Para la prueba rápida volvemos a la consola de firebase y buscamos la seccion d
 
 En el formulario que nos aparece debemos llenar los campos: Titulo de la notificación y Texto de la notificación como campos requeridos. Luego presionamos en "Enviar mensaje de prueba" y nos pedirá un token, ese token es el token que copiamos de el textarea con anterioridad, lo pegamos, adicionamos y presionamos en el boton "Probar"
 
-<img src="/assets/push-apache-cordova-actualizado/token-app.png" />
+<div class="contenedor-imagen">
+    <img src="/assets/push-apache-cordova-actualizado/token-app.png" />
+</div>
 
+<br>
 Funciona !!! Nos llegará la notificación a nuestro dispositivo sin problemas, puede ser que en la primera prueba la notificacion tarde unos minutos en llegar pero luego será con total normalidad.
 <img src="/assets/push-apache-cordova-actualizado/notificacion-funciona.png" />
 

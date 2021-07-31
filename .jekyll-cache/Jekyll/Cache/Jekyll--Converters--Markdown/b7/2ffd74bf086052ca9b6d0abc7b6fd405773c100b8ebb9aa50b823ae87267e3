@@ -1,0 +1,93 @@
+I"�<p>Firebase es la mejorada plataforma de desarrollo móvil en la nube de Google. Se trata de una plataforma disponible para diferentes plataformas (Android, iOS, web).</p>
+
+<p>Uno de los servicios que provee Firebase es el de Autenticacion sin necesidad en un “backend”, La logica del backend se lo puede controlar a travez de la consola de firebase.</p>
+
+<p>Realizaremos una simple aplicacion que permita a los usuarios:</p>
+
+<ul>
+  <li>Hacer login en la aplicacion</li>
+  <li>Registrar nuevos usuarios</li>
+</ul>
+
+<h2 id="crear-y-configurar-un-proyecto-en-firebase">Crear y configurar un proyecto en Firebase</h2>
+
+<p>Para poder utilizar este servicio debemos crear un proyecto(en la consola de firebase). Para ellos nos dirigimos a <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a>.</p>
+
+<ol>
+  <li>Le damos click al boton “CREAR NUEVO PROYECTO”</li>
+  <li>Le asignamos un “Nombre del proyecto” y una “Región”</li>
+  <li>“CREAR PROYECTO”</li>
+</ol>
+
+<p><img src="/assets/login-firebase/FirebaseConsole.png" /></p>
+
+<p>Una vez dentro del proyecto:</p>
+
+<ol>
+  <li>Nos dirigimos a la opcion “Authentication” en el menu lateral.</li>
+  <li>Vamos a la opcion “METODO DE INICIO DE SESION”</li>
+  <li>Habilitamos la opcion de inicio de sesion con “Correo electronico/contrasena”</li>
+  <li>Guardar</li>
+</ol>
+
+<p><img src="/assets/login-firebase/FirebaseConsoleConfiguracion.png" /></p>
+
+<p>Perfecto !!!</p>
+
+<p>Dentro de la misma pantalla nos dirigimos al tab “USUARIOS”, añadiremos un usuario de prueba.
+<img src="/assets/login-firebase/FirebaseConsoleNuevoUsuario.png" /></p>
+
+<h2 id="crear-un-nuevo-proyecto-cordova">Crear un nuevo proyecto Cordova</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cordova</span> <span class="n">create</span> <span class="no">LoginFirebase</span> <span class="n">com</span><span class="p">.</span><span class="nf">devmerz</span><span class="p">.</span><span class="nf">loginfirebase</span> <span class="no">LoginFirebase</span>
+<span class="n">cd</span> <span class="no">LoginFirebase</span>
+<span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">browser</span></code></pre></figure>
+
+<h2 id="adicionando-firebase-a-nuestro-proyecto">Adicionando Firebase a nuestro proyecto</h2>
+
+<p>Dentro del archivo index.js que se nos creó por defecto adicionaremos el codigo necesario para que las funciones de firebase funcionen.</p>
+
+<p>Dentro de la consola de Firebase, Debemos ir al area de configuracion del proyecto y buscar el area “Añade Firebase a tu aplicación web”, esta opcion te generará algo similar a esto:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://www.gstatic.com/firebasejs/3.6.4/firebase.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="c1">// Initialize Firebase</span>
+  <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">apiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">AIzaSyAq3COznvLM0rDSuuQUkW9PY3S4VxzAwNM</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">authDomain</span><span class="p">:</span> <span class="dl">"</span><span class="s2">login-con-firebase-y-cordova.firebaseapp.com</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">databaseURL</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://login-con-firebase-y-cordova.firebaseio.com</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">storageBucket</span><span class="p">:</span> <span class="dl">"</span><span class="s2">login-con-firebase-y-cordova.appspot.com</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">messagingSenderId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">461793064207</span><span class="dl">"</span>
+  <span class="p">};</span>
+  <span class="nx">firebase</span><span class="p">.</span><span class="nx">initializeApp</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
+
+<ol>
+  <li>
+    <p>El primer <strong>script</strong> debe ir dentro de <strong>index.html</strong>.</p>
+  </li>
+  <li>
+    <p>El <strong>contenido</strong> del segundo script debe ir dentro de la funcion “receivedEvent”, que se encuentra en el archivo <strong>index.js</strong></p>
+  </li>
+  <li>
+    <p>Para facilitar las cosas adicionamos Jquery al proyecto cordova.</p>
+  </li>
+</ol>
+
+<p>Ahora creamos un archivo <strong>funciones.js</strong> donde estarán nuestran funciones, la primera funcion que crearemos sera <strong>login()</strong> , esta funcion simplemente verificará que un usuario es valido en Firebase.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">function</span> <span class="n">login</span><span class="p">(){</span>
+    <span class="n">firebase</span><span class="p">.</span><span class="nf">auth</span><span class="p">().</span><span class="nf">signInWithEmailAndPassword</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="s2">"#email"</span><span class="p">).</span><span class="nf">val</span><span class="p">(),</span> <span class="err">$</span><span class="p">(</span><span class="s2">"#password"</span><span class="p">).</span><span class="nf">val</span><span class="p">()).</span><span class="nf">catch</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">var</span> <span class="n">errorCode</span> <span class="o">=</span> <span class="n">error</span><span class="p">.</span><span class="nf">code</span><span class="p">;</span>
+      <span class="n">var</span> <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">error</span><span class="p">.</span><span class="nf">message</span><span class="p">;</span>
+      <span class="n">console</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="n">errorMessage</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Dentro de <strong>index.html</strong> crearemos un formulario simple (email, contraseña). y al boton “VERIFICAR USUARIO” de la aplicacion le adicionamos la siguiente funcion <strong>onclick=”login()”</strong></p>
+
+<div class="contenedor-imagen">
+  <img src="/assets/login-firebase/LoginAndroid.png" style="width:250px;" />
+</div>
+
+:ET
