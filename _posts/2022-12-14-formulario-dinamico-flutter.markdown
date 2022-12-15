@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Formulario dinámico Flutter
-categories: formulario dinámico flutter
+title: Formulario (Textfield) dinámico en Flutter
+categories: formulario dinámico flutter textfield
 permalink: :title
 ---
 
