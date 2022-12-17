@@ -6,7 +6,11 @@ permalink: :title
 ---
 
 
-A continuación vamos a hacer la funcionalidad de crear y eliminar **TextField** dinámicamente, por su puesto también esta funcionalidad implica que cada **Textfield** mantenga su valor y nos permita recuperarlo más adelante:
+A continuación vamos a hacer la funcionalidad de crear/eliminar un formulario dinámicamente.
+<br/>
+Por supuesto también esta funcionalidad implica que cada campo del formulario mantenga su valor y nos permita recuperarlo más adelante:
+
+Nota: Para hacerlo más sencillo de entender mi formulario solo contará de 1 campo **TextField**. Entonces lo que en la imagen esta marcado con rojo será 1 formulario, y cada fila abajo de esta representará 1 formulario:
 
 <div class="contenedor-imagen">
     <img src="/assets/formulario-dinamico-flutter/formulario-dinamico-flutter.png">
@@ -15,7 +19,7 @@ A continuación vamos a hacer la funcionalidad de crear y eliminar **TextField**
 
 Comencemos!
 
-Vamos a crear una clase para representar el formulario (a partir de ahora le llamaré formulario porque podría tener más campos, por ahora solo tendrá uno) ... en este caso mi formulario solo tendra un campo que se llamará **_name**, Si tu formulario tiene mas campos puedes crear nuevos atributos (y sus respectivos Getters) en esta clase:
+Vamos a crear una clase para representar el formulario que en este caso tendra un campo que se llamará **_name**, Si tu formulario tiene mas campos puedes crear nuevos atributos en esta clase:
 
 {% highlight java %}
 class BasicForm {
@@ -90,3 +94,13 @@ Ahora simplemente hacemos correr la aplicacion y podremos ver lo siguiente:
 </div>
 <br/>
 El botón al lado del + sirve para mostrar el valor de los **TextField** actuales en la consola.
+
+<hr/>
+Y bueno eso es todo, Esta funcionalidad se puede expandir para un formlario aún más grande. Hice una versión con 2 campos (Texto y Select):
+<div class="contenedor-imagen">
+    <img src="/assets/formulario-dinamico-flutter/formulario-dinamico-flutter-select.png">
+</div>  
+<br/>
+
+
+Por si gustas verlo, lo puedes encontrar acá: <a href="https://github.com/devmerz/formulario-dinamico-flutter" target="_blank">Flutter dynamic form</a>
