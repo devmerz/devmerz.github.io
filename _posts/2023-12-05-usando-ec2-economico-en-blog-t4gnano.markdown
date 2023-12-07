@@ -17,8 +17,9 @@ Para probar el rendimiento de estos servidores se me ocurrió la idea de levanta
 - Instalación de software
 - Rendimiento para el admin y para el usuario
 - Velocidad de respuesta
+- Rendimiento corriendo contenedores docker
 
-Lo normal para poder trabajar sin realentizarte por temas del server.
+Tú sabes, Lo normal para poder trabajar sin ser ralentizado por temas del server.
 
 Para este ejemplo voy a hacer uso de instancia llamada **t4g.nano**(la más básica de esta familia) que tiene un costo de **0.0042$ por hora**. Mensualmente nos costaría aprox **3$** por mes. Vamos a proceder creando la instancia EC2 con las siguientes configuraciones:
 
@@ -40,10 +41,10 @@ También vamos a permitir el tráfico desde cualquier lugar de internet via ssh,
 </div>
 <br/>
 
-Es lo único que vamos a personalizar, todo las demas opciones las dejamos por defecto.
+Es lo único que vamos a personalizar, todo las demás opciones las dejamos por defecto.
 
 
-Para levantar el blog vamos a elegir wordpress ya que es una solucion común para blogs, En mi caso lo voy a levantar usando **docker** con **docker-compose**. Voy a hacer uso de un archivo docker-compose.yml para levantar 2 servicio. Uno de MariaDB y otro de Wordpress:
+Para levantar el blog vamos a elegir wordpress ya que es una solución común para blogs, En mi caso lo voy a levantar usando **docker** con **docker-compose**. Voy a hacer uso de un archivo docker-compose.yml para levantar 2 servicio. Uno de MariaDB y otro de Wordpress:
 
 
 {% highlight yml %}
@@ -79,7 +80,7 @@ docker-compose up -d
 {% endhighlight %}
 
 
-Podemos ver los contenedores que esta corriendo ejecutando el comando **docker ps**:
+Podemos ver los contenedores que están corriendo ejecutando el comando **docker ps**:
 <div class="contenedor-imagen">
     <img src="/assets/ec2-t4g/contenedores-docker.png" />
 </div>
@@ -116,7 +117,7 @@ Voy a usar **htop** para ver como va el servidor en cuando a consumo de **RAM** 
 <br/>
 
 
-No es un misterio que docker consume mucha RAM, Docker esta consumiendo aprox 140Mb corriendo mis 2 contenedores. Me parece bien para la prueba. Aunque considerá que si levantas los servicios sin docker podrias ganar un poco de memoria ahí.
+El servidor antes de levantar mis contenedores consume un total de 154Mb de RAM. Con dos contenedores docker corriendo tenemos un consumo de 246Mb de RAM. Me parece bien para la prueba. Aunque considera que si levantas los servicios sin docker podrias ganar un poco de memoria ahí.
 
 <br/>
 ### ¿Y como responde la página?
@@ -129,20 +130,20 @@ Pues bastante bien. El tiempo de respuesta es bastante veloz incluso tomando en 
 <br/>
 Cabe recalcar que aunque la página tenga muchas imagenes la velocidad de carga sigue siendo bastante buena.
 
-### ¿Cuantas peticiones simultaneas soporta?
+### ¿Cuántas peticiones simultáneas soporta?
 
-Vamos a hacer una pruebas más técnica viendo cuantas peticiones simultaneas soporta nuestro server, Para esto vamos hacer uso de **Apache benchmark**. Lo instalamos y ejecutamos con el comando: 
+Vamos a hacer una pruebas más técnica viendo cuantas peticiones simultáneas soporta nuestro server, Para esto vamos hacer uso de **Apache benchmark**. Lo instalamos y ejecutamos con el comando: 
 
 {% highlight bash %}
 ab -n 100 -c 100 http://3.84.109.77/
 {% endhighlight %}
 
 Siendo: 
-- -n es la cantidad de request que debe hacer en esta sesion
-- -c es la cantidad de conexiones simultaneas que debe ejecutar al mismo tiempo
+- -n es la cantidad de request que debe hacer en esta sesión
+- -c es la cantidad de conexiones simultáneas que debe ejecutar al mismo tiempo
 
 
-Despues de hacer un rato  de pruebas te puedo comentar que el servidor puede manejar 100 conexiones al mismo tiempo **sin ningun problema**. a partir de 100 conexiones simultaneas al mismo tiempo ya comienza a tener problemas de rendimiento como puedes ver a continuación:
+Despues de hacer un rato  de pruebas te puedo comentar que el servidor puede manejar 100 conexiones al mismo tiempo **sin ningun problema**. a partir de 100 conexiones simultáneas al mismo tiempo ya comienza a tener problemas de rendimiento como puedes ver a continuación:
 
 <div class="contenedor-imagen">
     <img src="/assets/ec2-t4g/limite.png" width="70%" />
@@ -153,9 +154,70 @@ Pero hey !!!
 Soportar 100 conexiones simultaneas en un server de 3$ que tiene Docker, Wordpress y MariaDB corriendo. Me parece excelente la verdad.
 
 
-### Conclusion
 
-Despues de tener el blog funcionando por dos meses puedo decir que: **Sí, Si vale la pena** las instancias de tipo **t4g** con arquitectura **ARM**. Y que la instancia más económica **t4g.nano** si da buen rendimiento si buscas un server para hacer pruebas.
+### Probando con 5 contenedores docker
 
-Es más ... ahora que vi la potencia de esta familia EC2 pienso que tranquilamente podría servir microservicios, quizá escriba de eso más adelante.
+Y que tal si corremos más contenedores docker como una aplicación real que usa la arquitectura de microservicios?
+
+Vamos a probar levantando 5 contenedores que usan: **nginx**, **mysql**, **alpine**, **redis** y **postgres** y veamos que como se comporta el server.
+
+Nota: Para esta prueba he bajado los contenedores del blog. Este es el docker-compose.yml que usaré:
+
+{% highlight yml %}
+version: '3'
+    services:
+    web-app:
+        image: nginx:latest
+        ports:
+        - "80:80"
+        networks:
+        - my_network
+
+    database:
+        image: mysql:latest
+        environment:
+        MYSQL_ROOT_PASSWORD: root_password
+        MYSQL_DATABASE: my_database
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password
+        networks:
+        - my_network
+
+    backend-server:
+        image: alpine:latest
+        command: tail -f /dev/null
+        networks:
+        - my_network
+
+    cache-server:
+        image: redis:latest
+        networks:
+        - my_network
+
+    postgres-db:
+        image: postgres:latest
+        environment:
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: my_postgres_db
+        networks:
+        - my_network
+
+    networks:
+    my_network:
+        driver: bridge
+{% endhighlight %}
+
+Todo levanto sin absolutamente ningun problema, Podemos ver un incremento en el uso de memoria RAM, lo cual era esperado:
+
+<div class="contenedor-imagen">
+    <img src="/assets/ec2-t4g/5-contenedores.png" width="70%" />
+</div>
+<br/>
+Podemos ver que tranquilamente podría soportar una aplicación pequeña/mediana que usa la arquitectura de microservicios.
+
+<br/>
+### Conclusión
+
+Despues de tener el blog funcionando por dos meses puedo decir que: **Sí, Si vale la pena** las instancias de tipo **t4g** con arquitectura **ARM**. Y que la instancia más económica **t4g.nano** si da buen rendimiento si buscas un server para hacer pruebas o tener algún servicio corriendo ahí.
 
