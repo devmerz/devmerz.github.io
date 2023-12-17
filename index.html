@@ -4,7 +4,7 @@ layout: default
 
 <div class="home">
 
-    <h2 class="">Articulos</h2>
+    <!-- <h2 class="">Articulos</h2> -->
 
     <ul class="post-list">
         {% for post in site.posts %}
@@ -12,15 +12,17 @@ layout: default
             <!-- <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span> -->
 
             <h2>
-            <a class="post-link text-decoration-none" href="{{ post.url | prepend: site.baseurl }}">
-                {{ post.title }}
-            </a>
+                <strong>
+                    <a class="post-link text-decoration-none" href="{{ post.url | prepend: site.baseurl }}">
+                        {{ post.title }}
+                    </a>
+                </strong>
             </h2>
             {{ post.excerpt | truncatewords: 2050}}
         </li>
         {% endfor %}
     </ul>
 
-  <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
+    <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
 
 </div>

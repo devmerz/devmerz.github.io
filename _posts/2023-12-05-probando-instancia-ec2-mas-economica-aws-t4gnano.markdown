@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Probando la instancia EC2 de tipo t4g.nano ¿Da buen rendimiento?
-categories: instancia ec2 barato ecomomico barato blog t4g t4gnano
+title: Probando la instancia EC2 mas económica de AWS - t4g.nano
+categories: instancia ec2 barato economico barato blog t4g t4gnano
 permalink: :title
 ---
 
