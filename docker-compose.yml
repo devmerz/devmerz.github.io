@@ -1,0 +1,11 @@
+version: "3"
+services:
+  devmerz.github.io:
+    build: .
+    ports:
+      - 4000:4000
+    develop:
+      watch:
+        - action: sync
+          path: ./_posts
+          target: ./usr/src/app/_posts
